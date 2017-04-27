@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Contact Card</title>
+        <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).on("click","#submitButton", function(){
+                var firstName = $('#first_name').val();
+                var lastName = $('#last_name').val();
+                var description = $('textarea').val();
+
+                $('#contactSide').append("<div class='contactCard'>" + '<h3>' + firstName + ' ' + lastName + '</h3>' + '<p>Click for description!</p>' + "<p class='hideP'>" + description +'</p>' + '</div>');
+                $('.hideP').hide();
+                return false;
+            });
+            $(document).on("click",".contactCard", function(){
+                $(this).children().toggle();
+            });
+        });
+    </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h2>GIVE SOME FEEDBACK</h2>
+            <div id="content">
+                <div id="formSide">
+                    <form>
+                        <h1>Stay Connected</h1>
+                        <input type="text" id="first_name" value="First Name">
+                        <input type="text" id="last_name" value="Last Name">
+                        <h1>Describe Yourself</h1>
+                        <textarea name="description"></textarea>
+                        <input id="submitButton" type="submit" value="Submit">
+                    </form>
+                </div> <!-- formSide -->
+                <div id="contactSide">
+
+                </div> <!-- contactSide -->
+            </div> <!-- content -->
+            <h2></h2>
+        </div> <!-- wrapper -->
+    </body>
+</html>

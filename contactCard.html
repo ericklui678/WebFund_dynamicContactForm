@@ -7,15 +7,18 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var count = 0;
             $(document).on("click","#submitButton", function(){
+                count++;
                 var firstName = $('#first_name').val();
                 var lastName = $('#last_name').val();
                 var description = $('textarea').val();
 
-                $('#contactSide').append("<div class='contactCard'>" + '<h3>' + firstName + ' ' + lastName + '</h3>' + '<p>Click for description!</p>' + "<p class='hideP'>" + description +'</p>' + '</div>');
-                $('.hideP').hide();
+                $('#contactSide').append("<div class='contactCard'>" + '<h3>' + firstName + ' ' + lastName + '</h3>' + '<p>Click for description!</p>' + "<p id='" + count + "' class='hideP'>" + description +'</p>' + '</div>');
+                $('#'+count).hide();
                 return false;
             });
+
             $(document).on("click",".contactCard", function(){
                 $(this).children().toggle();
             });
